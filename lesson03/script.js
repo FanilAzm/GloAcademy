@@ -13,9 +13,9 @@ let answer = costs;
 let costs2 = prompt('Какие обязательные ежемесячные расходы у вас есть?');
 let answer2 = costs2;
 
-let price = prompt('Во сколько это обойдется?');
+let price = +prompt('Во сколько это обойдется?');
 let answer3 = price;
-let price2 = prompt('Во сколько это обойдется?');
+let price2 = +prompt('Во сколько это обойдется?');
 let answer4 = price2;
 
 let budgetMonth = money - answer3 - answer4;
