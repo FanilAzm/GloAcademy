@@ -2,7 +2,7 @@
 
 function argument(arg){
     arg = prompt('Введите строку');
-    arg.trim();
+    arg = arg.trim();
     if(!isNaN(arg)){
         return alert('Вы ввели не строку!');
     } else {
