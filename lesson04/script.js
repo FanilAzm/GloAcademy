@@ -3,6 +3,7 @@ let income = 'фриланс';
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую').split(', ');
 let deposit = confirm('Есть ли у вас депозит в банке?');
 let mission = 1000000;
+let period = 9;
 
 function showTypeof(data){
     console.log(data, typeof(data));
@@ -35,6 +36,8 @@ let accumulatedMonth = function getAccumulatedMonth(){
 function getTargetMonth(){
     return (Math.floor(mission / accumulatedMonth()));
 }
+
+showTypeof((period * accumulatedMonth()));
 
 let budgetMonth = money - getExpensesMonth();
 showTypeof(budgetMonth);

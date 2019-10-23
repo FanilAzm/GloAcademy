@@ -1,16 +1,16 @@
 'use strict';
 
-function argument(event){
-    event = prompt('Введите строку');
-    event.trim();
-    if(!isNaN(event)){
+function argument(arg){
+    arg = prompt('Введите строку');
+    arg.trim();
+    if(!isNaN(arg)){
         return alert('Вы ввели не строку!');
     } else {
-        if(event.length > 30){
-            event = event.slice(0, 30) + '...';
+        if(arg.length > 30){
+            arg = arg.slice(0, 30) + '...';
         }
-        return event;
+        return arg;
     }
 }
 
-console.log(argument('строка'));
+console.log(argument());
