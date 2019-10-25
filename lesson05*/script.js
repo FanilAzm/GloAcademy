@@ -19,5 +19,5 @@ for(let i = 2; i < n; i++){
     for(let j = 2; j < i; j++){
         if(i % j == 0) break;
     }
-    console.log(i);
+    console.log(i + ' - Делители этого числа: ' + 1 + ' ' + i);
 }
