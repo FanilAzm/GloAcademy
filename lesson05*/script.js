@@ -15,9 +15,10 @@ for(let i = 0; i < arr.length; i++){
 
 let n = 100;
 
+nextNum:
 for(let i = 2; i < n; i++){
     for(let j = 2; j < i; j++){
-        if(i % j == 0) break;
+        if(i % j == 0) continue nextNum;
     }
-    console.log(i + ' - Делители этого числа: ' + 1 + ' ' + i);
+    console.log(i + ' - Делители этого числа: ' + 1 + ' и ' + i);
 }
