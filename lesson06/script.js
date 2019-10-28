@@ -23,7 +23,7 @@ let appData = {
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'бензин, дорога, коморка');
             appData.addExpenses = addExpenses.split(', ');
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
-        let costs = prompt('Какие обязательные ежемесячные расходы у вас есть?', 'жкх'),
+        let costs,
             num,
             sum = appData.expensesMonth;
 
@@ -33,7 +33,7 @@ let appData = {
                 appData.expenses[costs] = parseInt(num);
             }
             if(i === 1){
-                costs = prompt('Какие обязательные ежемесячные расходы у вас есть?', 'жкх');
+                costs = prompt('Какие обязательные ежемесячные расходы у вас есть?', 'кино');
                 appData.expenses[costs] = parseInt(num);
             }
 

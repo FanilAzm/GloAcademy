@@ -33,7 +33,7 @@ let appData = {
                 appData.expenses[costs] = parseInt(num);
             }
             if(i === 1){
-                costs = prompt('Какие обязательные ежемесячные расходы у вас есть?', 'жкх');
+                costs = prompt('Какие обязательные ежемесячные расходы у вас есть?', 'кино');
                 appData.expenses[costs] = parseInt(num);
             }
 
