@@ -4,13 +4,14 @@ let week = ['Понедельник', 'Вторник', 'Среда', 'Четв�
     body = document.querySelector('body'),
     div,
     weekEnd = week[5];
-    weekEnd.style.fontStyle = 'italic';
-    console.log(weekEnd);
+    // weekEnd.style.fontStyle = 'italic';
+    // console.log(weekEnd);
 
 for(let i = 0; i < week.length; i++){
     div = document.createElement('div');
     body.appendChild(div);
     div.innerHTML += week[i];
+    console.log(typeof(div));
 
     // console.log(div);
 }

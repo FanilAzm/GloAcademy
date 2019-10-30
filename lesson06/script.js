@@ -16,15 +16,15 @@ let appData = {
     deposit: false,
     mission: 500000,
     period: function(){
-        return parseInt(this.mission / this.getBudget.budgetMonth());
+        return parseInt(this.mission / this.budgetMonth);
     },
     budgetDay: 0,
     budgetMonth: 0,
     expensesMonth: 0,
     asking: function(){
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'бензин, дорога, коморка');
-            appData.addExpenses = addExpenses.split(', ');
-            appData.deposit = confirm('Есть ли у вас депозит в банке?');
+            this.addExpenses = addExpenses.split(', ');
+            this.deposit = confirm('Есть ли у вас депозит в банке?');
         let costs,
             num;
 
@@ -38,41 +38,37 @@ let appData = {
             }
             
             num = prompt('Во сколько это обойдется?', '2000');
-            appData.expenses[costs] = parseInt(num);
+            this.expenses[costs] = parseInt(num);
 
         }
     },
     getExpensesMonth: function(){
         let sum = 0;
 
-        appData.asking();
+        this.asking();
 
         for(let key in this.expenses){
             sum += this.expenses[key];
         }
         
-        return appData.expensesMonth = sum;
+        return this.expensesMonth = sum;
         
     },
-    getBudget: {
-        budgetDay: function(){
-            return Math.floor(this.budgetMonth / 30);
-        },
-        budgetMonth: function(){
-            return money - appData.expensesMonth;
-        },
+    getBudget: function(){
+        this.budgetDay = this.mission / this.budgetMonth;
+        this.budgetMonth = money - this.expensesMonth;
     },
     getTargetMonth: function(){
-        return ((Math.floor(appData.mission / appData.getBudget.budgetMonth())) > 0) ? 'Цель будет достигнута за ' + appData.period() + ' месяцев' : 'Цель не будет достигнута';
+        return (Math.floor(this.mission / this.budgetMonth > 0)) ? 'Цель будет достигнута за ' + this.period() + ' месяцев' : 'Цель не будет достигнута';
     },
     getStatusIncome: function(){
-        if(appData.getBudget.budgetMonth > 800){
+        if(this.budgetMonth > 800){
             return ('Высокий уровень дохода');
-        } else if (appData.getBudget.budgetMonth > 300 && appData.getBudget.budgetMonth <= 800){
+        } else if (this.budgetMonth > 300 && this.budgetMonth <= 800){
             return ('Средний уровень дохода');
-        } else if (appData.getBudget.budgetMonth > 0 && appData.getBudget.budgetMonth <= 300){
+        } else if (this.budgetMonth > 0 && this.budgetMonth <= 300){
             return ('Низкий уровень дохода');
-        } else if (appData.getBudget.budgetMonth === 0){
+        } else if (this.budgetMonth === 0){
             return ('Что то пошло не так');
         }
     }
@@ -86,9 +82,11 @@ console.log(appData);
 
 console.log('Расходы за месяц: ' + appData.getExpensesMonth());
 
+appData.getBudget();
+
 console.log(appData.getTargetMonth());
 
-console.log('Уровень дохода: ' + appData.getBudget.budgetMonth());
+console.log('Уровень дохода: ' + appData.budgetMonth);
 
 for(let key in appData){
     console.log('Наша программа включает в себя данные: ' + key + ' ' + appData[key]);
