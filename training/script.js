@@ -14,31 +14,40 @@ let appData = {
     expenses: {},
     addExpenses: [],
     deposit: false,
+    persentDeposit: 0,
+    moneyDeposit: 0,
     mission: 500000,
-    period: function(){
-        return parseInt(this.mission / this.budgetMonth);
-    },
+    period: 0,
     budgetDay: 0,
     budgetMonth: 0,
     expensesMonth: 0,
     asking: function(){
+
+        if(confirm('Есть ли у вас дополнительный заработок?')){
+            let itemIncome = validationStr(prompt('Какой у вас дополнительный заработок?', 'фриланс'));
+            let cashIncome = validationNum(prompt('Сколько в месяц вы на этом зарабатываете?', '10000'));
+
+            this.income[itemIncome] = cashIncome;
+        }
+
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую', 'бензин, дорога, коморка');
             this.addExpenses = addExpenses.split(', ');
             this.deposit = confirm('Есть ли у вас депозит в банке?');
+            this.getInfoDeposit();
         let costs,
             num;
 
         for(let i = 0; i < 2; i++){
             
             if(i === 0){
-                costs = prompt('Какие обязательные ежемесячные расходы у вас есть?', 'жкх');
+                costs = validationStr(prompt('Какие обязательные ежемесячные расходы у вас есть?', 'жкх'));
             }
             if(i === 1){
-                costs = prompt('Какие обязательные ежемесячные расходы у вас есть?', 'кино');
+                costs = validationStr(prompt('Какие обязательные ежемесячные расходы у вас есть?', 'кино'));
             }
             
             num = prompt('Во сколько это обойдется?', '2000');
-            this.expenses[costs] = parseInt(num);
+            this.expenses[costs] = validationNum(num);
 
         }
     },
@@ -55,11 +64,13 @@ let appData = {
         
     },
     getBudget: function(){
-        this.budgetDay = this.mission / this.budgetMonth;
+
         this.budgetMonth = money - this.expensesMonth;
+        this.budgetDay = Math.floor(this.budgetMonth / 30);
+        this.period = parseInt(this.mission / this.budgetMonth);
     },
     getTargetMonth: function(){
-        return (Math.floor(this.mission / this.budgetMonth > 0)) ? 'Цель будет достигнута за ' + this.period() + ' месяцев' : 'Цель не будет достигнута';
+        return (Math.floor(this.mission / this.budgetMonth > 0)) ? 'Цель будет достигнута за ' + this.period + ' месяцев' : 'Цель не будет достигнута';
     },
     getStatusIncome: function(){
         if(this.budgetMonth > 800){
@@ -71,11 +82,24 @@ let appData = {
         } else if (this.budgetMonth === 0){
             return ('Что то пошло не так');
         }
+    },
+    getInfoDeposit: function(){
+        if(this.deposit){
+            this.persentDeposit = validationNum(prompt('Какой годовой процент?', '10'));
+            this.moneyDeposit = validationNum(prompt('Какая сумма заложена?', '10000'));
+        }
+    },
+    calcSavedMoney: function(){
+        return this.budgetMonth * appData.period;
     }
 };
 
 let validationNum = function(num){
     return (!isNaN(parseFloat(num))) ? parseFloat(num) : (!isNaN(parseInt(num))) ? parseInt(num) : validationNum(prompt('Введите число правильно'));
+};
+
+let validationStr = function(str){
+    return ((isNaN(Number(str)) && typeof str === 'string') ? str : validationStr(prompt('Введите строку правильно')));
 };
 
 console.log(appData);
@@ -92,4 +116,11 @@ for(let key in appData){
     console.log('Наша программа включает в себя данные: ' + key + ' ' + appData[key]);
 }
 
+console.log(appData.moneyDeposit, appData.persentDeposit, appData.calcSavedMoney());
 
+
+let upperCase = appData.addExpenses.map(function(item){
+    return item[0].toUpperCase() + item.slice(1).toLowerCase();
+});
+
+console.log(upperCase.join(', '));
