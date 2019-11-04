@@ -77,6 +77,8 @@ let appData = {
     reset: function(){
         inputText.forEach(function(item){
             item.value = '';
+            start.style.display = 'block';
+            cancel.style.display = 'none';
             leftInputText.forEach(function(item){
                 item.removeAttribute('disabled', true);
             });
