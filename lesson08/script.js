@@ -55,12 +55,12 @@ let appData = {
             start.setAttribute('disabled', false);
             start.style.display = 'none';
             cancel.style.display = 'block';
+
+            leftInputText = document.querySelector('.data').querySelectorAll('input[type=text]');
             leftInputText.forEach(function(item){
                 item.setAttribute('disabled', true);
             });
         }
-
-        
 
         this.budget = +salaryAmount.value;
 
