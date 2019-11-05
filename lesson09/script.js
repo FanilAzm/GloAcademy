@@ -55,6 +55,8 @@ let appData = {
             start.setAttribute('disabled', false);
             start.style.display = 'none';
             cancel.style.display = 'block';
+
+            leftInputText = document.querySelector('.data').querySelectorAll('input[type=text]');
             leftInputText.forEach(function(item){
                 item.setAttribute('disabled', true);
             });
@@ -77,11 +79,29 @@ let appData = {
     reset: function(){
         inputText.forEach(function(item){
             item.value = '';
-            start.style.display = 'block';
-            cancel.style.display = 'none';
-            leftInputText.forEach(function(item){
-                item.removeAttribute('disabled', true);
-            });
+        });
+        start.style.display = 'block';
+        cancel.style.display = 'none';
+
+        leftInputText = document.querySelector('.data').querySelectorAll('input[type=text]');
+        leftInputText.forEach(function(item){
+            item.removeAttribute('disabled', true);
+        });
+
+        expensesItems = document.querySelectorAll('.expenses-items');
+        expensesItems.forEach(function(item, index){
+            if(index !== 0){
+                item.remove();
+                addExpensesBtn.style.display = 'block';
+            }
+        });
+
+        incomeItems = document.querySelectorAll('.income-items');
+        incomeItems.forEach(function(item, index){
+            if(index !== 0){
+                item.remove();
+                addIncomeBtn.style.display = 'block';
+            }
         });
     },
     showResult: function(){
