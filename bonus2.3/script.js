@@ -5,10 +5,10 @@ const cityArr = {
     jap: ['Токио', 'Киото', 'Осака', 'Иокогама'] 
   };
 
-let country = document.getElementById('country').querySelectorAll('option'),
+let country = document.getElementById('country'),
     city = document.getElementById('city'),
     result = document.querySelector('.result'),
-    option;
+    option = document.querySelectorAll('option');
     
 function sortArr(val){
     option = '';
@@ -18,9 +18,17 @@ function sortArr(val){
     city.innerHTML = option;
 }
 
+console.log('option.selectedIndex: ', country[option.selectedIndex]);
+
 document.getElementById('country').addEventListener('change', function(e){
     sortArr(e.target.value);
 });
+
+document.getElementById('city').addEventListener('change', function(e){
+    result.textContent = [option.selectedIndex]  + ' ' + e.target.value;
+});
+
+
 
     
 
