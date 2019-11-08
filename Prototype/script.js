@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         this.fontSize = fontSize;
     }
 
-    DomElement.prototype.create = function(){
+    DomElement.prototype.create = function(text){
         let div,
             p;
             
@@ -28,14 +28,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
             background-color: blue;
             font-size: 20px;
             position: absolute;
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
         `;
+
+        div.innerHTML = text;
 
         return div || p;
     };
 
     let tagElem = new DomElement('.start');
     tagElem.create();
-    body.appendChild(tagElem.create());
+    body.appendChild(tagElem.create('кубик'));
     console.dir(tagElem.create());
 
     // document.addEventListener('keydown', catchKey);
