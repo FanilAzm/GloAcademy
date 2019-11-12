@@ -93,6 +93,20 @@ class AppData{
         leftInputText.forEach(function(item){
             item.removeAttribute('disabled', true);
         });
+
+        this.budget = 0;
+        this.income = {};
+        this.addIncome = [];
+        this.expenses = {};
+        this.addExpenses = [];
+        this.deposit = false;
+        this.persentDeposit = 0;
+        this.moneyDeposit = 0;
+        this.period = 0;
+        this.budgetDay = 0;
+        this.budgetMonth = 0;
+        this.incomeMonth = 0;
+        this.expensesMonth = 0;
     
         rangeInput.value = 1;
         periodAmount.textContent = 1;
@@ -133,9 +147,8 @@ class AppData{
         });
     }
 
-
-
     getExpenses(){
+        expensesItems = document.querySelectorAll('.expenses-items');
         expensesItems.forEach((item) => {
             let itemExpenses = item.querySelector('input.expenses-title').value,
                 cashExpenses = item.querySelector('input.expenses-amount').value;
@@ -147,6 +160,7 @@ class AppData{
     }
 
     getIncome(){
+        incomeItems = document.querySelectorAll('.income-items');
         incomeItems.forEach((item) => {
             let itemIncome = item.querySelector('input.income-title').value,
                 cashIncome = item.querySelector('input.income-amount').value;
