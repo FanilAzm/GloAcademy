@@ -15,27 +15,46 @@ window.addEventListener('DOMContentLoaded', function(){
                 minutes = Math.floor(timeRemaining / 60) % 60,
                 hours = Math.floor(timeRemaining / 60 / 60) % 24,
                 days = Math.floor(timeRemaining / 60 / 60 / 24);
-                return {days, hours, minutes, seconds};
+            return {days, hours, minutes, seconds, timeRemaining};
+        }
+
+        function addZero(time){
+            if(time.textContent.length !== 2){
+                time.textContent = '0' + time.textContent.slice(0, 1);
+            }
         }
 
         function updateClock(){
             let timer = getTimeRemaining();
-
+            
             timerDays.textContent = timer.days;
             timerHours.textContent = timer.hours;
             timerMinutes.textContent = timer.minutes;
             timerSeconds.textContent = timer.seconds;
+            
+            addZero(timerDays);
+            addZero(timerHours);
+            addZero(timerMinutes);
+            addZero(timerSeconds);
 
-            if(timer.timeRemaining > 0){
-                setTimeout(updateClock, 1000);
+            let idInterval = setInterval(updateClock, 1000);
+
+            if(timer.timeRemaining == 0){
+                clearInterval(idInterval);
+            }
+            if(timer.timeRemaining < 0){
+                timerDays.innerHTML = '00';
+                timerHours.innerHTML = '00';
+                timerMinutes.innerHTML = '00';
+                timerSeconds.innerHTML = '00';
+                clearInterval(idInterval);
             }
         }
 
         updateClock();
     }
 
-    // countTimer('01 december 2019');
-    setInterval(countTimer, 1000, '01 december 2019');
+    countTimer('12 november 2019');
 
 
 
