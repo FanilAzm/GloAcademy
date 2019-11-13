@@ -39,9 +39,6 @@ window.addEventListener('DOMContentLoaded', function(){
 
             let idInterval = setInterval(updateClock, 1000);
 
-            if(timer.timeRemaining == 0){
-                clearInterval(idInterval);
-            }
             if(timer.timeRemaining < 0){
                 timerDays.innerHTML = '00';
                 timerHours.innerHTML = '00';
@@ -54,7 +51,7 @@ window.addEventListener('DOMContentLoaded', function(){
         updateClock();
     }
 
-    countTimer('12 november 2019');
+    countTimer('12 december 2019');
 
 
 
