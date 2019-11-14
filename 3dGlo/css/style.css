@@ -569,7 +569,7 @@ footer {
     text-align: center;
     width: 40rem;
     left: 38%;
-    top: 10%;
+    top: 0;
     -webkit-transform: translateX(-50px);
     transform: translateX(-50px);
     padding: 2rem 6rem;

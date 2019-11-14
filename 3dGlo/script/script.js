@@ -1,7 +1,8 @@
 window.addEventListener('DOMContentLoaded', function(){
     'use strict';
 
-    function countTimer(deadline){
+    //Таймер
+    const countTimer = (deadline) => {
         let timerDays = document.getElementById('timer-days'),
             timerHours = document.getElementById('timer-hours'),
             timerMinutes = document.getElementById('timer-minutes'),
@@ -47,9 +48,66 @@ window.addEventListener('DOMContentLoaded', function(){
                 clearInterval(idInterval);
             }
         }
-    }
+    };
 
     countTimer('12 december 2019');
+
+    //Меню
+    const toggleMenu = () => {
+        const btnMenu = document.querySelector('.menu'),
+                menu = document.querySelector('menu'),
+                closeBtn = document.querySelector('.close-btn'),
+                menuItems = menu.querySelectorAll('ul>li');
+
+        const handlerMenu = () => {
+            menu.classList.toggle('active-menu');
+        };
+        
+        btnMenu.addEventListener('click', handlerMenu);
+        closeBtn.addEventListener('click', handlerMenu);
+        menuItems.forEach((elem) => elem.addEventListener('click', () => {
+            handlerMenu();
+        }));
+    };
+
+    toggleMenu();
+
+    //Popup
+    const togglePopup = () => {
+        const popup = document.querySelector('.popup'),
+              popupBtn = document.querySelectorAll('.popup-btn'),
+              popupClose = document.querySelector('.popup-close'),
+              popupContent = document.querySelector('.popup-content'),
+              clientWidth = document.documentElement.clientWidth;
+
+        const popupAnimate = () => {
+            if(clientWidth <= 768){
+                return;
+            } else {
+                let start = Date.now();
+                let timer = setInterval(function() {
+                    let timePassed = Date.now() - start;
+                    popupContent.style.top = timePassed / 25 + '%';
+                    if (timePassed > 400) clearInterval(timer);
+                }, 20);
+            }
+        };
+
+        popupBtn.forEach((elem) => {
+            elem.addEventListener('click', () => {
+                popupAnimate();
+                popup.style.display = 'block';
+            });
+        });
+
+        popupClose.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+    };
+
+    togglePopup();
+
+    
 
 
 
