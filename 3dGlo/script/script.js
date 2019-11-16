@@ -322,6 +322,7 @@ window.addEventListener('DOMContentLoaded', function(){
             style.textContent = `
                 .glo-slider {
                     overflow: hidden;
+                    position: relative;
                 }
                 .glo-slider__wrap {
                     display: flex;
@@ -331,7 +332,6 @@ window.addEventListener('DOMContentLoaded', function(){
                 .glo-slider__item {
                     display: flex;
                     align-items: center;
-                    justufy-content: center;
                     flex: 0 0 ${this.option.slideWidth}%;
                     margin: auto 0 !important;
                 }
@@ -378,15 +378,19 @@ window.addEventListener('DOMContentLoaded', function(){
             style.textContent = `
                 .glo-slider__prev,
                 .glo-slider__next {
+                    position: absolute;
+                    top: 25px;
                     margin: 0 10px;
                     border: 15px solid transparent;
                     outline: none;
                 }
                 .glo-slider__prev {
                     border-right-color: #19b5fe;
+                    left: -40px;
                 }
                 .glo-slider__next {
                     border-left-color: #19b5fe;
+                    right: -40px;
                 }
 
                 .glo-slider__prev:hover,
@@ -429,8 +433,8 @@ window.addEventListener('DOMContentLoaded', function(){
     const carousel = new SliderCarousel({
         main: '.companies-wrapper',
         wrap: '.companies-hor',
-        prev: '#prev-slide',
-        next: '#next-slide',
+        // prev: '#prev-slide',
+        // next: '#next-slide',
         infinity: true,
         slidesToShow: 4,
         responsive: [
