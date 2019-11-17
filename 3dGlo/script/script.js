@@ -456,8 +456,44 @@ window.addEventListener('DOMContentLoaded', function(){
     carousel.init();
 
 
+    const changeImg = () => {
+        const image = document.querySelectorAll('.command__photo');
 
+        image.forEach((item) => {
+            const oldImage = item.getAttribute('src');
+            item.addEventListener('mouseenter', (event) => {
+                event.target.src = event.target.dataset.img;
+            });
+    
+            item.addEventListener('mouseleave', (event) => {
+                event.target.src = oldImage;
+            });
+        });
+        
+    };
 
+    changeImg();
+
+    const calcValidate = () => {
+        const calcInput = document.querySelectorAll('.calc-item'),
+            calcBlock = document.querySelector('.calc-block');
+
+        calcBlock.addEventListener('input', (event) => {
+            let target = event.target;
+
+            calcInput.forEach((item) => {
+                if(!target.matches('.calc-square, .calc-count, .calc-day')){
+                    return;
+                }
+                item.value = item.value.replace(/\D/g, '');
+            });
+
+        });
+
+        
+    };
+
+    calcValidate();
 
 
 
