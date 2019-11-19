@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Validator</title>
+    <style>
+        input {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <form id="myform">
+            <label for="phone">Телефон</label>
+            <input type="phone" id="phone" name="phone" placeholder="Телефон">
+            <label for="email">Почта</label>
+            <input type="email" id="email" name="email" placeholder="Почта">
+            <br>
+            <button type="submit">submit</button>
+            <button type="reset">reset</button>
+        </form>
+    </section>
+
+    <script src="./plugins/validator/validator.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
