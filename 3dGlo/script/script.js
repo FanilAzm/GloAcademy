@@ -130,6 +130,9 @@ window.addEventListener('DOMContentLoaded', function(){
             tab = tabHeader.querySelectorAll('.service-header-tab'),
             tabContent = document.querySelectorAll('.service-tab');
 
+        tabContent[1].classList.add('d-none');
+        tabContent[2].classList.add('d-none');
+
         const toggleTabContent = (index) => {
             for(let i = 0; i < tabContent.length; i++){
                 if(index === i){
@@ -553,7 +556,7 @@ window.addEventListener('DOMContentLoaded', function(){
     calculator(100);
 
     // Валидация форм
-    const valid = new Validator({
+    const form1 = new Validator({
         selector: '#form1',
         pattern: {
             // phone: /^\d+$/
@@ -573,8 +576,56 @@ window.addEventListener('DOMContentLoaded', function(){
             ]
         }
     });
+
+    const form2 = new Validator({
+        selector: '#form2',
+        pattern: {
+            // phone: /^\d+$/
+        },
+        method: {
+            'form2-name': [
+                ['notEmpty'],
+                ['pattern', 'name']
+            ],
+            'form2-phone': [
+                ['notEmpty'],
+                ['pattern', 'phone']
+            ],
+            'form2-email': [
+                ['notEmpty'],
+                ['pattern', 'email']
+            ],
+            'form2-message': [
+                ['notEmpty'],
+                ['pattern', 'name']
+            ]
+        }
+    });
+
+    const form3 = new Validator({
+        selector: '#form3',
+        pattern: {
+            // phone: /^\d+$/
+        },
+        method: {
+            'form3-name': [
+                ['notEmpty'],
+                ['pattern', 'name']
+            ],
+            'form3-phone': [
+                ['notEmpty'],
+                ['pattern', 'phone']
+            ],
+            'form3-email': [
+                ['notEmpty'],
+                ['pattern', 'email']
+            ]
+        }
+    });
     
-    valid.init();
+    form1.init();
+    form2.init();
+    form3.init();
 
 
 
