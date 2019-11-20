@@ -520,8 +520,6 @@ window.addEventListener('DOMContentLoaded', function(){
             if(typeValue && squareValue){
                 total = price * typeValue * squareValue * countValue * dayValue;
             }
-            
-            totalValue.textContent = parseInt(total);
 
             const numAnimate = () => {
                 let number = 1,
@@ -532,13 +530,13 @@ window.addEventListener('DOMContentLoaded', function(){
                     number++;
                     if(number <= result){
                         totalValue.textContent = number;
-                    } else {
-                        clearInterval(interval);
                     }
                 }
             };
 
             numAnimate();
+
+            totalValue.textContent = parseInt(total);
         };
 
         calcBlock.addEventListener('change', (event) => {
