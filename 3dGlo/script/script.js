@@ -525,13 +525,15 @@ window.addEventListener('DOMContentLoaded', function(){
 
             const numAnimate = () => {
                 let number = 1,
-                    result = total;
-                setInterval(function(){
+                    result = total,
+                    interval = setInterval(anim, 0.001);
+                
+                function anim(){
                     number++;
                     if(number <= result){
                         totalValue.textContent = number;
                     }
-                }, 0.001);
+                }
             };
 
             numAnimate();
