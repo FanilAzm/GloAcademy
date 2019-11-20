@@ -99,6 +99,7 @@ class Validator {
                 font-size: 12px;
                 font-family: sans-serif;
                 color: red;
+                transform: translateY(-20px);
             }
         `;
         document.head.appendChild(style);

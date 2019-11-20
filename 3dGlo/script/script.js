@@ -531,11 +531,15 @@ window.addEventListener('DOMContentLoaded', function(){
                     if(number <= result){
                         totalValue.textContent = number;
                     }
+                    document.addEventListener('change', () => {
+                        clearInterval(interval);
+                        totalValue.textContent = parseInt(total);
+                    });
                 }
             };
             numAnimate();
 
-            totalValue.textContent = parseInt(total);
+            
         };
 
         calcBlock.addEventListener('change', (event) => {
@@ -555,15 +559,15 @@ window.addEventListener('DOMContentLoaded', function(){
             // phone: /^\d+$/
         },
         method: {
-            'name': [
+            'form1-name': [
                 ['notEmpty'],
                 ['pattern', 'name']
             ],
-            'phone': [
+            'form1-phone': [
                 ['notEmpty'],
                 ['pattern', 'phone']
             ],
-            'email': [
+            'form1-email': [
                 ['notEmpty'],
                 ['pattern', 'email']
             ]
