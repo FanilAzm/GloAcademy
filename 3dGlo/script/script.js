@@ -532,6 +532,8 @@ window.addEventListener('DOMContentLoaded', function(){
                     number++;
                     if(number <= result){
                         totalValue.textContent = number;
+                    } else {
+                        clearInterval(interval);
                     }
                 }
             };
