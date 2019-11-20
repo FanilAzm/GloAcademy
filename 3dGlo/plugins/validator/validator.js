@@ -105,6 +105,9 @@ class Validator {
     }
 
     setPattern(){
+        if(!this.pattern.name){
+            this.pattern.name = /^[А-Яа-яЁё]+$/;
+        }
         if(!this.pattern.phone){
             this.pattern.phone = /^\+?[78]([-()]*\d){10}$/;
         }
