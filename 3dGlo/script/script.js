@@ -531,12 +531,14 @@ window.addEventListener('DOMContentLoaded', function(){
                     if(number <= result){
                         totalValue.textContent = number;
                     }
+                    document.addEventListener('change', () => {
+                        clearInterval(interval);
+                        totalValue.textContent = parseInt(total);
+                    });
                 }
             };
 
             numAnimate();
-
-            totalValue.textContent = parseInt(total);
         };
 
         calcBlock.addEventListener('change', (event) => {
