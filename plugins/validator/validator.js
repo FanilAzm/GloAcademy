@@ -14,10 +14,41 @@ class Validator {
         this.applyStyle();
         this.elementForm.forEach(elem => elem.addEventListener('change', this.checkIt.bind(this)));
         this.setPattern();
+        this.form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.elementForm.forEach((elem) => this.checkIt({target: elem}));
+            if(this.error.size){
+                e.preventDefault();
+            }
+        });
     }
 
     isValid(elem){
-        return false;
+        const validatorMethod = {
+            notEmpty(elem){
+                if(elem.value.trim() === ''){
+                    return false;
+                }
+                return true;
+            },
+            pattern(elem, pattern){
+                return pattern.test(elem.value);
+            }
+        };
+
+        if(this.method){
+            const method = this.method[elem.id];
+
+            if(method){
+                return method.every(item => {
+                    return validatorMethod[item[0]](elem, this.pattern[item[1]]);
+                });
+            }
+        } else {
+            console.warn('Необходимо передать id полей ввода и методы проверки этих полей!');
+        }
+        
+        return true;
     }
 
     checkIt(event){
@@ -29,14 +60,13 @@ class Validator {
             this.showError(target);
             this.error.add(target);
         }
-        console.log(this.error);
     }
 
     showError(elem){
         elem.classList.remove('success');
         elem.classList.add('error');
 
-        if(elem.nextElementSibling.classList.contains('valid-error')){
+        if(elem.nextElementSibling && elem.nextElementSibling.classList.contains('valid-error')){
             return;
         }
 
@@ -51,7 +81,7 @@ class Validator {
         elem.classList.remove('error');
         elem.classList.add('success');
 
-        if(elem.nextElementSibling.classList.contains('valid-error')){
+        if(elem.nextElementSibling && elem.nextElementSibling.classList.contains('valid-error')){
             elem.nextElementSibling.remove();
         }
     }
@@ -79,8 +109,7 @@ class Validator {
             this.pattern.phone = /^\+?[78]([-()]*\d){10}$/;
         }
         if(!this.pattern.email){
-            this.pattern.email = /^\w+@\w+\.\w{2,}$/;
+            this.pattern.email = /^\w+\.?_?-?\w+@\w+\.\w{2,}$/;
         }
-        console.log(this.pattern);
     }
 }
