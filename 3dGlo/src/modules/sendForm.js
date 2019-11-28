@@ -5,9 +5,12 @@ const sendForm = () => {
 
     const form = document.getElementById('form1'),
         form2 = document.getElementById('form2'),
-        form3 = document.getElementById('form3');
-
+        form3 = document.getElementById('form3'),
+        messageInput = document.getElementById('form2-message');
+        
         form3.style.color  = 'white';
+        messageInput.setAttribute('type', 'text');
+
 
     const statusMessage = document.createElement('div');
     statusMessage.style.cssText = 'font-size: 2rem;';
@@ -41,8 +44,7 @@ const sendForm = () => {
         form.addEventListener('input', (event) => {
             const target = event.target,
                 inputPhone = document.querySelectorAll('.form-phone'),
-                inputText = document.querySelectorAll('input[type=text]'),
-                inputBtn = document.querySelector('.form-btn');
+                inputText = document.querySelectorAll('input[type=text]');
 
             
             const validateForm = (input, inputType, pattern) => {

@@ -75,72 +75,72 @@ calculator(100);
 sendForm();
 
 // Валидация форм
-const form1 = new Validator({
-    selector: '#form1',
-    pattern: {
-        // phone: /^\d+$/
-    },
-    method: {
-        'form1-name': [
-            ['notEmpty'],
-            ['pattern', 'name']
-        ],
-        'form1-phone': [
-            ['notEmpty'],
-            ['pattern', 'phone']
-        ],
-        'form1-email': [
-            ['notEmpty'],
-            ['pattern', 'email']
-        ]
-    }
-});
+// const form1 = new Validator({
+//     selector: '#form1',
+//     pattern: {
+//         // phone: /^\d+$/
+//     },
+//     method: {
+//         'form1-name': [
+//             ['notEmpty'],
+//             ['pattern', 'name']
+//         ],
+//         'form1-phone': [
+//             ['notEmpty'],
+//             ['pattern', 'phone']
+//         ],
+//         'form1-email': [
+//             ['notEmpty'],
+//             ['pattern', 'email']
+//         ]
+//     }
+// });
 
-const form2 = new Validator({
-    selector: '#form2',
-    pattern: {
-        // phone: /^\d+$/
-    },
-    method: {
-        'form2-name': [
-            ['notEmpty'],
-            ['pattern', 'name']
-        ],
-        'form2-phone': [
-            ['notEmpty'],
-            ['pattern', 'phone']
-        ],
-        'form2-email': [
-            ['notEmpty'],
-            ['pattern', 'email']
-        ],
-        'form2-message': [
-            ['notEmpty'],
-            ['pattern', 'name']
-        ]
-    }
-});
+// const form2 = new Validator({
+//     selector: '#form2',
+//     pattern: {
+//         // phone: /^\d+$/
+//     },
+//     method: {
+//         'form2-name': [
+//             ['notEmpty'],
+//             ['pattern', 'name']
+//         ],
+//         'form2-phone': [
+//             ['notEmpty'],
+//             ['pattern', 'phone']
+//         ],
+//         'form2-email': [
+//             ['notEmpty'],
+//             ['pattern', 'email']
+//         ],
+//         'form2-message': [
+//             ['notEmpty'],
+//             ['pattern', 'name']
+//         ]
+//     }
+// });
 
-const form3 = new Validator({
-    selector: '#form3',
-    pattern: {
-        // phone: /^\d+$/
-    },
-    method: {
-        'form3-name': [
-            ['notEmpty'],
-            ['pattern', 'name']
-        ],
-        'form3-phone': [
-            ['notEmpty'],
-            ['pattern', 'phone']
-        ],
-        'form3-email': [
-            ['notEmpty'],
-            ['pattern', 'email']
-        ]
-    }
-});
+// const form3 = new Validator({
+//     selector: '#form3',
+//     pattern: {
+//         // phone: /^\d+$/
+//     },
+//     method: {
+//         'form3-name': [
+//             ['notEmpty'],
+//             ['pattern', 'name']
+//         ],
+//         'form3-phone': [
+//             ['notEmpty'],
+//             ['pattern', 'phone']
+//         ],
+//         'form3-email': [
+//             ['notEmpty'],
+//             ['pattern', 'email']
+//         ]
+//     }
+// });
 
 // form1.init();
 // form2.init();

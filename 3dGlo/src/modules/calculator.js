@@ -30,7 +30,7 @@ const calculator = (price = 100) => {
         const numAnimate = () => {
             let number = 1,
                 result = total,
-                interval = setInterval(anim, 0.001);
+                interval = setInterval(anim, 0.00001);
             
             function anim(){
                 number++;

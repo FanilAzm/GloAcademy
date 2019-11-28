@@ -113,14 +113,15 @@ class SliderCarousel{
                 margin: 0 10px;
                 border: 15px solid transparent;
                 outline: none;
+                background-color: transparent;
             }
             .glo-slider__prev {
                 border-right-color: #19b5fe;
-                left: -40px;
+                left: -30px;
             }
             .glo-slider__next {
                 border-left-color: #19b5fe;
-                right: -40px;
+                right: -30px;
             }
 
             .glo-slider__prev:hover,
