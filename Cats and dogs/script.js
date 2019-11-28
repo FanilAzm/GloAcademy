@@ -1,3 +1,5 @@
+'use strict';
+
 const card = document.querySelector('.card'),
     dogBtn = document.querySelector('.btn-dog'),
     catBtn = document.querySelector('.btn-cat');
