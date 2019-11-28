@@ -41,7 +41,8 @@ const sendForm = () => {
         form.addEventListener('input', (event) => {
             const target = event.target,
                 inputPhone = document.querySelectorAll('.form-phone'),
-                inputText = document.querySelectorAll('input[type=text]');
+                inputText = document.querySelectorAll('input[type=text]'),
+                inputBtn = document.querySelector('.form-btn');
 
             
             const validateForm = (input, inputType, pattern) => {
@@ -49,6 +50,7 @@ const sendForm = () => {
                     input.forEach((item) => {
                         item.addEventListener('change', () => {
                             if(item.value != item.value.match(pattern)){
+                                item.value = '';
                                 item.style.border = '2px solid red';
                             } else {
                                 item.style.border = 'none';
